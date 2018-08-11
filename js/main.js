@@ -197,7 +197,8 @@ function createMap(){
 		"<span style='color: gray'>OpenStreatMap</span>": OSMSt,
 		"<span style='color: gray'>Esri World Imagery</span>": esriImg
 	};
-	L.control.layers(basemaps).addTo(map);
+	layerControl = L.control.layers(null, basemaps, {position: 'bottomleft'});
+    layerControl.addTo(map);
     
     //add mapbox access token
     //L.mapbox.accessToken = //"pk.eyJ1IjoiemxpLXdpc2MiLCJhIjoiY2pjdHVwNjc5MDJ0bDJxbWpmOHllejYweiJ9.zsVQQz34Ie2vf5Ma6dDs_A";
@@ -420,7 +421,7 @@ function updatePropSymbols(map, attribute){
 function createSequenceControls(map, attributes){
     var SequenceControl = L.Control.extend({
         options: {
-            position: 'bottomleft'
+            position: 'topright'
         },
         
         onAdd: function (map) {
@@ -428,11 +429,11 @@ function createSequenceControls(map, attributes){
             var container = L.DomUtil.create('div', 'sequence-control-container');   
 
             //add skip buttons
-            $(container).append('<button class="skip" id="reverse" title="Reverse"><<</button>');
+            $(container).append('<button class="skip" id="forward" title="Forward">>></button>');
             //create range input element (slider)
             $(container).append('<input class="range-slider" type="range">');
-            
-            $(container).append('<button class="skip" id="forward" title="Forward">>></button>');
+            $(container).append('<button class="skip" id="reverse" title="Reverse"><<</button>');
+
 
             
             //kill any mouse event listeners on the map
