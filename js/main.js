@@ -197,7 +197,7 @@ function createMap(){
 		"<span style='color: gray'>OpenStreatMap</span>": OSMSt,
 		"<span style='color: gray'>Esri World Imagery</span>": esriImg
 	};
-	layerControl = L.control.layers(null, basemaps, {position: 'bottomleft'});
+    layerControl = L.control.layers(null, basemaps, {position: 'bottomleft'});
     layerControl.addTo(map);
     
     //add mapbox access token
